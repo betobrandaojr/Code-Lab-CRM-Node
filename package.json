@@ -2,10 +2,11 @@
   "name": "projetos_empresa",
   "version": "1.0.0",
   "description": "Inicio 12/01/24",
-  "main": "./src/index.js",
+  
   "dev": "nodemon ./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",

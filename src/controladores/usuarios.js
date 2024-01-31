@@ -69,7 +69,7 @@ const editarPerfilUsuario = async (req, res) => {
   try {
     const userId = req.usuario.rows[0].id;
     const usuarioExistente = await pool.query(
-      "SELECT * FROM usuarios WHERE id = $1",
+      "SELECT * FROM usuarios WHERE usuario_id = $1",
       [userId]
     );
 
@@ -78,7 +78,7 @@ const editarPerfilUsuario = async (req, res) => {
     }
 
     const emailExistente = await pool.query(
-      "SELECT * FROM usuarios WHERE email = $1 AND id <> $2",
+      "SELECT * FROM usuarios WHERE email = $1 AND usuario_id <> $2",
       [email, userId]
     );
 
@@ -87,7 +87,7 @@ const editarPerfilUsuario = async (req, res) => {
     }
 
     const usuarioAtualizado = await pool.query(
-      "UPDATE usuarios SET nome = $1, email = $2 WHERE id = $3 RETURNING id, nome, email",
+      "UPDATE usuarios SET nome = $1, email = $2 WHERE iusuario_idd = $3 RETURNING usuario_id, nome, email",
       [nome, email, userId]
     );
 

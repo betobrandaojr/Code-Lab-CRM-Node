@@ -12,7 +12,7 @@ const verificarLogin = async (req, res, next) => {
     const token = authorization.split(' ')[1];
 
     try {
-        const { id } = jwt.verify(token, senhaJwt);
+        const { usuario_id } = jwt.verify(token, senhaJwt);
 
         const usuario = await pool.query('select * from usuarios where id = $1', [id]);
 

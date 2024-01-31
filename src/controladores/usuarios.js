@@ -67,14 +67,14 @@ const editarPerfilUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
 
   try {
-    const userId = req.usuario.rows[0].id;
+    const userId = req.usuario.rows[0].usuario_id;
     const usuarioExistente = await pool.query(
       "SELECT * FROM usuarios WHERE usuario_id = $1",
       [userId]
     );
 
     if (usuarioExistente.rowCount < 1) {
-      return res.status(400).json({ erro: "Usuario não encontrado!" });
+      return res.status(400).json({ erro: "Usuario não encon%%%trado!" });
     }
 
     const emailExistente = await pool.query(
@@ -87,7 +87,7 @@ const editarPerfilUsuario = async (req, res) => {
     }
 
     const usuarioAtualizado = await pool.query(
-      "UPDATE usuarios SET nome = $1, email = $2 WHERE iusuario_idd = $3 RETURNING usuario_id, nome, email",
+      "UPDATE usuarios SET nome = $1, email = $2 WHERE usuario_id = $3 RETURNING usuario_id, nome, email",
       [nome, email, userId]
     );
 

@@ -14,7 +14,7 @@ const verificarLogin = async (req, res, next) => {
     try {
         const { usuario_id } = jwt.verify(token, senhaJwt);
 
-        const usuario = await pool.query('select * from usuarios where id = $1', [id]);
+        const usuario = await pool.query('select * from usuarios where usuario_id = $1', [usuario_id]);
 
         if (!usuario) {
            return res.status(401).json({ mensagem: 'Não autorizado.' });
